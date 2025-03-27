@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head')%>
+<body>
+    <div class="App">
+        <header class="bg-body-tertiary">
+            <%- include('./partials/nav')%>
+        </header>
+
+        <div>
+            <div>
+                <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <% images.forEach((img, index) => { %>
+                            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                <img src="<%= img %>" class="d-block w-100" alt="Slide <%= index + 1 %>">
+                            </div>
+                        <% }); %>
+                    </div>
+                    <!-- Carousel controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="divid-title my-5">
+            <div class="container text-center">
+                <h1>Products</h1>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+            
+            <div class="container">
+                <div class="row">
+                    <% batteries.forEach(battery => { %>
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <img src="<%= battery.image %>" class="card-img-top" alt="<%= battery.name %>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= battery.name %></h5>
+                                    <p class="card-text">Price: $<%= battery.price %></p>
+                                    <p class="card-text"><%= battery.description %></p>
+                                    <a href="/buy/<%= battery.id %>" class="btn btn-primary">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+
+        <div class="divid-title my-5">
+            <div class="container text-center">
+                <h1>Services</h1>
+            </div>
+        </div>
+
+        <div>
+            <div class="container mt-5">
+                <div class="row">
+                    <% services.forEach(service => { %>
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <img src="<%= service.image %>" class="card-img-top" alt="<%= service.name %>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= service.name %></h5>
+                                    <p class="card-text">Price: $<%= service.price %></p>
+                                    <p class="card-text"><%= service.description %></p>
+                                    <a href="/book/<%= service.id %>" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Contact Us</h1>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form action="/submit-contact" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-dark text-white mt-5 p-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Contact Us</h5>
+                        <p>
+                            <strong>Email:</strong> info@example.com<br>
+                            <strong>Phone:</strong> (123) 456-7890<br>
+                            <strong>Address:</strong> 123 Battery St, Power City, PC 12345
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="/about" class="text-white">About Us</a></li>
+                            <li><a href="/services" class="text-white">Our Services</a></li>
+                            <li><a href="/contact" class="text-white">Contact</a></li>
+                            <li><a href="/batteries" class="text-white">Shop Batteries</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Follow Us</h5>
+                        <a href="/" class="text-white mr-2"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="/" class="text-white mr-2"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="/" class="text-white"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <p>&copy; 2025 Your Joaquim Magode. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
